@@ -33,3 +33,15 @@ jobs:
       - run: |
           docker build . -t lv23acr.azurecr.io/epldatapi:${{ github.sha }}
           docker push lv23acr.azurecr.io/epldatapi:${{ github.sha }}
+          
+      - name: Deploy to Azure Container Instances
+        uses: 'azure/aci-deploy@v1'
+        with:
+            resource-group: myTCS
+            dns-name-label: lv23epldataapi
+            image: lv23acr.azurecr.io/epldatapi:${{ github.sha }}
+            registry-login-server: lv23acr.azurecr.io
+            registry-username: ${{ secrets.ACR_USERNAME }}
+            registry-password: ${{ secrets.ACR_PASSWORD }}
+            name: lv23epldataci
+            location: 'centralindia'
