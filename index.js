@@ -41,9 +41,15 @@ app.get ('/getManUInfo',function (req, res,next) {
     })();
 });*/
 
+
+app.use ('/about',function (req, res) {  
+    res.send('Our About API will be updated shortly, please visit soon');  
+});
+
 app.use ('/',function (req, res) {  
     res.send('Welcome to lv23 EPL Data API!!!');  
 });
+
 
 async function getDBInfo() {
 
