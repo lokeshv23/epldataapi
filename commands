@@ -1,0 +1,7 @@
+docker build . -t lv23epldata
+docker run -dp 3000:3000 lv23epldata
+export MY_PATH=$(pwd)
+
+ export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_3:$LD_LIBRARY_PATH
+  sh -c "echo /opt/oracle/instantclient_21_3 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+  
